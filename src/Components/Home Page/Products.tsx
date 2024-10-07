@@ -2,6 +2,7 @@ import React from 'react'
 import nike from '../../assets/img/nike.png'
 import nike1 from '../../assets/img/Nike1.jpg'
 import nike2 from '../../assets/img/Nike2.png'
+import { Link } from 'react-router-dom'
 
 interface Product {
     id: number
@@ -70,14 +71,14 @@ const Products:React.FC = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {products.map((product) => (
           <div key={product.id} className="bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 ease-in-out hover:scale-105">
-            <a href={product.link}  >
+            <Link to={product.link}  >
               <img
                 src={product.image}
                 alt={product.name}
                 className="w-full h-48 object-cover transition-transform duration-300 ease-in-out hover:scale-110" // Added hover effect
                 loading="lazy"
               />
-            </a>
+            </Link>
             <div className="p-4">
                
                

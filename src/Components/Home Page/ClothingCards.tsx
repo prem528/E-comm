@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';  
 import image1 from '../../assets/img/image01.jpg'
 import image2 from '../../assets/img/image02.jpg'
 import image3 from '../../assets/img/image03.jpg'
@@ -38,11 +39,10 @@ const ClothingCards:React.FC = () => {
     <div className="container mx-auto   px-10 lg:px-20 py-8">
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {clothingItems.map((item) => (
-          <a 
-            href={item.link} 
+          <Link  
+            to={item.link} // Use to instead of href
             key={item.id} 
             className="block bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-200 ease-in-out hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500"
-             
           >
             <div className="relative pb-[133%]">
               <img
@@ -56,7 +56,7 @@ const ClothingCards:React.FC = () => {
               <h3 className="text-lg font-semibold text-gray-800">{item.name}</h3>
               <p className="text-sm text-gray-600 mt-1">Click to view details</p>
             </div>
-          </a>
+          </Link>
         ))}
       </div>
     </div>
