@@ -15,13 +15,13 @@ const navItems: NavItem[] = [
   ]
 const Header:React.FC = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [cartItemCount, setCartItemCount] = useState(0)
+  //const [cartItemCount, setCartItemCount] = useState(0)
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen)
   }
   return (
-    <header className="bg-gray-200 shadow-md  lg:px-24">
+    <header className="bg-gray-100 shadow-md  lg:px-24">
     <div className="container mx-auto px-4 py-8 flex items-center justify-between">
       {/* Logo */}
       <div className="text-2xl font-bold text-primary">
