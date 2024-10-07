@@ -4,9 +4,7 @@ import Header from "./Components/Home Page/Header"
 import HeroSection from "./Components/Home Page/HeroSection"
 import Products from "./Components/Home Page/Products"
 
-
 import ProductDescription from "./Components/Product Description Page/ProductDescription";
-
 
  
 function App() {
