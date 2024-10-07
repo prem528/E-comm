@@ -15,7 +15,7 @@ const navItems: NavItem[] = [
   ]
 const Header:React.FC = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [cartItemCount, setCartItemCount] = useState(0)
+  const [cartItemCount,  ] = useState(0)
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen)
