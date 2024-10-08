@@ -5,6 +5,8 @@ import HeroSection from "./Components/Home Page/HeroSection"
 import Products from "./Components/Home Page/Products"
 
 import ProductDescription from "./Components/Product Description Page/ProductDescription";
+import ProductLink from './Components/Home Page/ProductLink';
+import Footer from './Components/Home Page/Footer';
 
  
 function App() {
@@ -18,19 +20,15 @@ function App() {
               <HeroSection />
               <ClothingCards/>
               <Products />
+              <ProductLink />
+              <Footer/>
               </>
             } />
-
         <Route path="/About" element={<ProductDescription/>} />  
       </Routes>
-      
     </div>
-
-    </Router>
-    
+    </Router> 
   )
-  
-  
 }
 
 export default App

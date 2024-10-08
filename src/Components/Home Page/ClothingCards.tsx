@@ -36,11 +36,11 @@ const clothingItems: ClothingItem[] = [
 
 const ClothingCards:React.FC = () => {
   return (
-    <div className="container mx-auto   px-10 lg:px-20 py-8">
+    <div className="container mx-auto  px-10 lg:px-20 py-20">
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {clothingItems.map((item) => (
           <Link  
-            to={item.link} // Use to instead of href
+            to={item.link}  
             key={item.id} 
             className="block bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-200 ease-in-out hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500"
           >
@@ -48,7 +48,7 @@ const ClothingCards:React.FC = () => {
               <img
                 src={item.image}
                 alt={item.name}
-                className="absolute top-0 left-0 w-full h-full object-cover hover:opacity-70"
+                className="absolute top-0 left-0 w-full h-full object-cover hover:opacity-80"
                 loading="lazy"
               />
             </div>
