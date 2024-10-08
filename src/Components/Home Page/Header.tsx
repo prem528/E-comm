@@ -1,17 +1,18 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom';  
 import { Search, ShoppingCart, Menu, X } from 'lucide-react'
 
 type NavItem = {
   label: string
-  href: string
+  link: string
 }
 
 const navItems: NavItem[] = [
-    { label: 'Home', href: '/' },
-    { label: 'Products', href: '/products' },
-    { label: 'Categories', href: '/' },
-    { label: 'About', href: '/about' },
-    { label: 'Contact', href: '/contact' },
+    { label: 'Home', link: '/' },
+    { label: 'Products', link: '/products' },
+    { label: 'Categories', link: '/' },
+    { label: 'About', link: '/about' },
+    { label: 'Contact', link: '/contact' },
   ]
 const Header:React.FC = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -32,13 +33,13 @@ const Header:React.FC = () => {
       <nav className="hidden md:flex flex-grow justify-center">
             <div className="space-x-6 font-semibold text-lg">
               {navItems.map((item) => (
-                <a
+                <Link
                   key={item.label}
-                  href={item.href}
+                  to={item.link}
                   className="text-muted-foreground hover:text-primary transition-colors"
                 >
                   {item.label}
-                </a>
+                </Link>
               ))}
             </div>
           </nav>
@@ -78,14 +79,14 @@ const Header:React.FC = () => {
       <nav className="md:hidden bg-background">
         <div className="container mx-auto px-4 py-2 flex flex-col space-y-2">
           {navItems.map((item) => (
-            <a
+            <Link
               key={item.label}
-              href={item.href}
+              to={item.link}
               className="text-muted-foreground hover:text-primary transition-colors py-2"
               onClick={toggleMenu}
             >
               {item.label}
-            </a>
+            </Link>
           ))}
           <div className="flex items-center py-2">
             <input
