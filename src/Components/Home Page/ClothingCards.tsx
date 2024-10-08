@@ -18,19 +18,19 @@ const clothingItems: ClothingItem[] = [
     id: 1,
     name: "Cloths",
     image: image1,
-    link: "/About"
+    link: "/products"
   },
   {
     id: 2,
     name: "Winter Dress",
     image: image2,
-    link: "/About"
+    link: "/products"
   },
   {
     id: 3,
     name: "Summer Dress",
     image: image3,
-    link: "/About"
+    link: "/products"
   }
 ]
 
