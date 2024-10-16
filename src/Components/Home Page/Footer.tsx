@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from '../../assets/img/logo.png';
+// import logo from '../../assets/img/logo.png';
 import { Mail, Phone } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
@@ -11,7 +11,8 @@ const Footer: React.FC = () => {
         <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-24">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-6 lg:gap-8">
             <div className="sm:col-span-2 lg:col-span-6 space-y-3 sm:space-y-4">
-              <img src={logo} alt="Delberto Logo" className="h-12 sm:h-16 mb-2 sm:mb-4" />
+              {/* <img src={logo} alt="Delberto Logo" className="h-12 sm:h-16 mb-2 sm:mb-4" /> */}
+              <h2 className='text-4xl font-bold'> E-Shop</h2>
               <p className="mb-2 sm:mb-4 text-black text-sm sm:text-base font-medium">Build, Launch, Grow with Delberto</p>
               <p className="whitespace-nowrap text-sm sm:text-base font-medium"><strong>Hours:</strong> Mon-Fri 8:30am-4:45pm IST</p>
               <div className="mt-2 sm:mt-4">
@@ -38,10 +39,10 @@ const Footer: React.FC = () => {
             <div className="md:col-span-1 lg:col-span-2 space-y-4">
               <h4 className="text-lg font-bold mb-4 text-blue-900">Products</h4>
               <ul className="space-y-4">
-              <li><Link to="/tailorfy" className="font-sans text-lg text-gray-800 hover:text-blue-600">Tailorfy</Link></li>
-                <li><Link to="/bespokify" className="font-sans text-lg text-gray-800 hover:text-blue-600" >Bespokify</Link></li>
-                <li><Link to="/webify" className="font-sans text-lg text-gray-800 hover:text-blue-600" >Webify</Link></li>
-                <li><Link to="/suppokify" className="font-sans text-lg text-gray-800 hover:text-blue-600">Suppokify</Link></li>
+              <li><Link to="/tailorfy" className="font-sans text-lg text-gray-800 hover:text-blue-600">Cloths</Link></li>
+                <li><Link to="/bespokify" className="font-sans text-lg text-gray-800 hover:text-blue-600" >Electronic</Link></li>
+                <li><Link to="/webify" className="font-sans text-lg text-gray-800 hover:text-blue-600" >HeadPhone</Link></li>
+                <li><Link to="/suppokify" className="font-sans text-lg text-gray-800 hover:text-blue-600">SmartPhone</Link></li>
               </ul>
             </div>
             <div className="md:col-span-1 lg:col-span-2 space-y-4">

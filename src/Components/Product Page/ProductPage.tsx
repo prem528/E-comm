@@ -1,4 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
+import { CartContext } from '../Hooks/CartContext'
+
 import nike from '../../assets/img/Nike1.jpg'
 import MacBook from '../../assets/img/macBook.jpg'
 import oversize from '../../assets/img/oversize.webp'
@@ -26,6 +28,11 @@ type FilterState = {
   categories: string[]
 }
 
+type CartContextType = {
+  addToCart: (product: Product) => void; // Define the structure of your CartContext
+  // Add other context methods or properties if needed
+}
+
 // Mock data
 const products: Product[] = [
   { id: 1, name: "MacBook", price: 999, category: "Electronics", image: MacBook, link: '/About'  },
@@ -47,6 +54,8 @@ export default function ProductPage() {
     priceRange: [0, 1000],
     categories: [],
   })
+
+  const { addToCart } = useContext(CartContext) as unknown as CartContextType; // Ensure proper typing
 
   const handlePriceChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = parseInt(e.target.value)
@@ -70,6 +79,10 @@ export default function ProductPage() {
     product.price <= filters.priceRange[1] &&
     (filters.categories.length === 0 || filters.categories.includes(product.category))
   )
+
+  const handleAddToCart = (product: Product) => {
+    addToCart(product)
+  }
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -128,7 +141,10 @@ export default function ProductPage() {
                   <p className="text-gray-600 mb-2">{product.category}</p>
                   <div className="flex justify-between items-center">
                     <span className="font-bold">${product.price}</span>
-                    <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
+                    <button 
+                      className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
+                      onClick={() => handleAddToCart(product)}
+                    >
                       Add to Cart
                     </button>
                   </div>

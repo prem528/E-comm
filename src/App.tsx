@@ -1,3 +1,4 @@
+ 
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import ClothingCards from "./Components/Home Page/ClothingCards"
 import Header from "./Components/Home Page/Header"
@@ -9,30 +10,33 @@ import ProductLink from './Components/Home Page/ProductLink';
 import Footer from './Components/Home Page/Footer';
 import ProductPage from './Components/Product Page/ProductPage';
 import Contact from './Components/Contact Page/Contact';
+import CartPage from './Components/Cart/CartPage';
+import { CartProvider } from './Components/Hooks/CartContext'; // Import CartProvider
 
- 
 function App() {
   return (
-    <Router>
-      <div>
-      < Header />
-      <Routes>
+    <CartProvider>
+      <Router>
+        <div>
+          <Header />
+          <Routes>
             <Route path="/" element={
               <>
-              <HeroSection />
-              <ClothingCards/>
-              <Products />
-              <ProductLink />
-              
+                <HeroSection />
+                <ClothingCards/>
+                <Products />
+                <ProductLink />
               </>
             } />
-        <Route path="/About" element={<ProductDescription/>} />  
-        <Route path="/products" element={<ProductPage/>} />
-        <Route path="/contact" element={<Contact/>} />
-      </Routes>
-      <Footer/>
-    </div>
-    </Router> 
+            <Route path="/About" element={<ProductDescription/>} />  
+            <Route path="/products" element={<ProductPage/>} />
+            <Route path="/contact" element={<Contact/>} />
+            <Route path="/cart" element={<CartPage/>} />
+          </Routes>
+          <Footer/>
+        </div>
+      </Router>
+    </CartProvider>
   )
 }
 

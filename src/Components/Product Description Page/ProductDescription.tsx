@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import nike from '../../assets/img/Nike1.jpg'
+import { CartContext } from '../Hooks/CartContext'
 
 interface Product {
   id: number
@@ -36,6 +37,24 @@ const ProductDescription:React.FC = () => {
     const [selectedColor, setSelectedColor] = useState(product.colors[0])
   const [selectedSize, setSelectedSize] = useState(product.sizes[0])
   const [mainImage, setMainImage] = useState(product.images[0])
+
+  const cartContext = useContext(CartContext)
+
+  if (!cartContext) {
+    throw new Error("CartContext must be used within a CartProvider")
+  }
+
+  const { addToCart } = cartContext
+
+  const handleAddToCart = () => {
+    addToCart({
+      id: product.id.toString(),
+      name: product.name,
+      price: product.price,
+      quantity: 1
+    })
+  }
+
   return (
     <div className="container mx-auto px-24 py-8">
     <div className="flex flex-col md:flex-row gap-8">
@@ -101,7 +120,9 @@ const ProductDescription:React.FC = () => {
         </div>
 
         {/* Add to Cart Button */}
-        <button className="w-full bg-blue-500 text-white px-6 py-3 rounded-full font-semibold text-lg hover:bg-blue-600 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 mb-4">
+        <button
+        onClick={handleAddToCart}
+         className="w-full bg-blue-500 text-white px-6 py-3 rounded-full font-semibold text-lg hover:bg-blue-600 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 mb-4">
           Add to Cart
         </button>
 
