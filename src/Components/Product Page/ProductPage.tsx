@@ -90,7 +90,7 @@ export default function ProductPage() {
       <div className="flex flex-col md:flex-row gap-8">
         {/* Filter Sidebar */}
         <aside className="w-full md:w-1/4">
-          <div className="bg-white rounded-lg shadow p-6">
+          <div className="bg-gray-200 rounded-lg shadow p-6">
             <h2 className="text-xl font-semibold mb-4">Filters</h2>
             <div className="mb-6">
               <h3 className="font-medium mb-2">Price Range</h3>
@@ -130,13 +130,13 @@ export default function ProductPage() {
 
         {/* Product Grid */}
         <main className="w-full md:w-3/4">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1  sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredProducts.map(product => (
-              <div key={product.id} className="bg-white rounded-lg shadow overflow-hidden">
+              <div key={product.id} className="bg-white rounded-lg shadow-md overflow-hidden">
                 <Link to={product.link}  >
-                <img src={product.image} alt={product.name} className="w-full h-80  object-cover transition-transform duration-300 ease-in-out hover:scale-110" />
+                <img src={product.image} alt={product.name} className="w-full h-80 object-cover transition-transform duration-300 ease-in-out hover:scale-110" />
                 </Link>
-                <div className="p-4">
+                <div className="p-4 ">
                   <h3 className="font-semibold text-lg mb-2">{product.name}</h3>
                   <p className="text-gray-600 mb-2">{product.category}</p>
                   <div className="flex justify-between items-center">

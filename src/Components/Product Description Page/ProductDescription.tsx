@@ -56,7 +56,7 @@ const ProductDescription:React.FC = () => {
   }
 
   return (
-    <div className="container mx-auto px-24 py-8">
+    <div className="container mx-auto px-24 pt-8 ">
     <div className="flex flex-col md:flex-row gap-8">
       <div className="md:w-1/2">
         <img src={mainImage} alt={product.name} className="w-full h-auto rounded-lg shadow-md mb-4" />
