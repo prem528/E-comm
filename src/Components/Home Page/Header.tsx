@@ -1,7 +1,8 @@
 import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
-import { Search, ShoppingCart, Menu, X } from "lucide-react";
+import { Search, ShoppingCart, Menu, X, Heart } from "lucide-react";
 import { CartContext } from "../Hooks/CartContext";
+import { WishlistContext } from "../Hooks/WishlistContext";
 
 type NavItem = {
   label: string;
@@ -17,7 +18,8 @@ const navItems: NavItem[] = [
 ];
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { cartItemCount } = useContext(CartContext) || { cartItemCount: 0 }; // Provide a default value
+  const { cartItemCount } = useContext(CartContext) || { cartItemCount: 0 };
+  const { wishlistItems } = useContext(WishlistContext) || { wishlistItems: [] };  
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -70,6 +72,18 @@ const Header: React.FC = () => {
             </div>
           )}
         </div>
+
+        <div className="relative">
+          <Link to="/wishlist">  
+            <Heart className="w-12 h-6 text-primary" />
+          </Link>  
+          {wishlistItems.length > 0 && (
+            <div className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
+              {wishlistItems.length}
+            </div>
+          )}
+        </div>
+        
 
         {/* Mobile Menu Button */}
         <button

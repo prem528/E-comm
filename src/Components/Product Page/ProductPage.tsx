@@ -1,88 +1,172 @@
-import React, { useState, useContext } from 'react'
-import { CartContext } from '../Hooks/CartContext'
+import React, { useState, useContext } from "react";
+import { CartContext } from "../Hooks/CartContext";
+import { WishlistContext } from "../Hooks/WishlistContext";
 
-import nike from '../../assets/img/Nike1.jpg'
-import MacBook from '../../assets/img/macBook.jpg'
-import oversize from '../../assets/img/oversize.webp'
-import tshirt from '../../assets/img/Tshirt.webp'
-import iphone from '../../assets/img/apple.jpg'
-import headphone from '../../assets/img/headphone.webp'
-import jeans from '../../assets/img/jeans.jpg'
-import camera from '../../assets/img/camera.jpg'
-import shirt from '../../assets/img/shirt.jpg'
+import nike from "../../assets/img/Nike1.jpg";
+import MacBook from "../../assets/img/macBook.jpg";
+import oversize from "../../assets/img/oversize.webp";
+import tshirt from "../../assets/img/Tshirt.webp";
+import iphone from "../../assets/img/apple.jpg";
+import headphone from "../../assets/img/headphone.webp";
+import jeans from "../../assets/img/jeans.jpg";
+import camera from "../../assets/img/camera.jpg";
+import shirt from "../../assets/img/shirt.jpg";
+// import star from '../../assets/img/star.png'
 
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
+import { Star } from "lucide-react";
 
 // Define types
 type Product = {
-  id: number
-  name: string
-  price: number
-  category: string
-  image: string
-  link: string  
-}
+  id: number;
+  name: string;
+  price: number;
+  category: string;
+  image: string;
+  link: string;
+};
 
 type FilterState = {
-  priceRange: [number, number]
-  categories: string[]
-}
+  priceRange: [number, number];
+  categories: string[];
+};
 
 type CartContextType = {
   addToCart: (product: Product) => void; // Define the structure of your CartContext
   // Add other context methods or properties if needed
-}
+};
+
+type WishlistContextType = {
+  addToWishlist: (product: Product) => void;
+  removeFromWishlist: (productId: number) => void;
+  isInWishlist: (productId: number) => boolean;
+};
 
 // Mock data
 const products: Product[] = [
-  { id: 1, name: "MacBook", price: 999, category: "Electronics", image: MacBook, link: '/About'  },
-  { id: 2, name: "iPhone 15", price: 699, category: "Electronics", image: iphone , link: '/About' },
-  { id: 3, name: "Headphones", price: 199, category: "Electronics", image: headphone, link: '/About' },
-  { id: 4, name: "T-shirt", price: 29, category: "Clothing", image: oversize, link: '/About'},
-  { id: 5, name: "Jeans", price: 59, category: "Clothing", image: jeans, link: '/About'},
-  { id: 6, name: "T-shirt", price: 89, category: "Clothing", image: tshirt, link: '/About' },
-  { id: 7, name: "Sneakers", price: 89, category: "Footwear", image: nike, link: '/About' },
-  { id: 8, name: "Camera", price: 499, category: "Electronics", image: camera, link: '/About' },
-  { id: 9, name: "Shirt", price: 89, category: "Clothing", image: shirt, link: '/About' },
-   
-]
+  {
+    id: 1,
+    name: "MacBook",
+    price: 999,
+    category: "Electronics",
+    image: MacBook,
+    link: "/About",
+  },
+  {
+    id: 2,
+    name: "iPhone 15",
+    price: 699,
+    category: "Electronics",
+    image: iphone,
+    link: "/About",
+  },
+  {
+    id: 3,
+    name: "Headphones",
+    price: 199,
+    category: "Electronics",
+    image: headphone,
+    link: "/About",
+  },
+  {
+    id: 4,
+    name: "T-shirt",
+    price: 29,
+    category: "Clothing",
+    image: oversize,
+    link: "/About",
+  },
+  {
+    id: 5,
+    name: "Jeans",
+    price: 59,
+    category: "Clothing",
+    image: jeans,
+    link: "/About",
+  },
+  {
+    id: 6,
+    name: "T-shirt",
+    price: 89,
+    category: "Clothing",
+    image: tshirt,
+    link: "/About",
+  },
+  {
+    id: 7,
+    name: "Sneakers",
+    price: 89,
+    category: "Footwear",
+    image: nike,
+    link: "/About",
+  },
+  {
+    id: 8,
+    name: "Camera",
+    price: 499,
+    category: "Electronics",
+    image: camera,
+    link: "/About",
+  },
+  {
+    id: 9,
+    name: "Shirt",
+    price: 89,
+    category: "Clothing",
+    image: shirt,
+    link: "/About",
+  },
+];
 
-const categories = ["Electronics", "Clothing", "Footwear"]
+const categories = ["Electronics", "Clothing", "Footwear"];
 
 export default function ProductPage() {
   const [filters, setFilters] = useState<FilterState>({
     priceRange: [0, 1000],
     categories: [],
-  })
+  });
 
   const { addToCart } = useContext(CartContext) as unknown as CartContextType; // Ensure proper typing
+  const { addToWishlist, removeFromWishlist, isInWishlist } = useContext(
+    WishlistContext
+  ) as WishlistContextType;
 
   const handlePriceChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = parseInt(e.target.value)
-    setFilters(prev => ({
+    const value = parseInt(e.target.value);
+    setFilters((prev) => ({
       ...prev,
       priceRange: [prev.priceRange[0], value],
-    }))
-  }
+    }));
+  };
 
   const handleCategoryChange = (category: string) => {
-    setFilters(prev => ({
+    setFilters((prev) => ({
       ...prev,
       categories: prev.categories.includes(category)
-        ? prev.categories.filter(c => c !== category)
+        ? prev.categories.filter((c) => c !== category)
         : [...prev.categories, category],
-    }))
-  }
+    }));
+  };
 
-  const filteredProducts = products.filter(product => 
-    product.price >= filters.priceRange[0] &&
-    product.price <= filters.priceRange[1] &&
-    (filters.categories.length === 0 || filters.categories.includes(product.category))
-  )
+  const filteredProducts = products.filter(
+    (product) =>
+      product.price >= filters.priceRange[0] &&
+      product.price <= filters.priceRange[1] &&
+      (filters.categories.length === 0 ||
+        filters.categories.includes(product.category))
+  );
 
   const handleAddToCart = (product: Product) => {
-    addToCart(product)
-  }
+    addToCart(product);
+  };
+
+  const handleAddToWishlist = (product: Product) => {
+    if (isInWishlist(product.id)) {
+      removeFromWishlist(product.id);
+    } else {
+      addToWishlist(product);
+    }
+  };
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -110,8 +194,11 @@ export default function ProductPage() {
             </div>
             <div>
               <h3 className="font-medium mb-2">Categories</h3>
-              {categories.map(category => (
-                <div key={category} className="flex items-center space-x-2 mb-2">
+              {categories.map((category) => (
+                <div
+                  key={category}
+                  className="flex items-center space-x-2 mb-2"
+                >
                   <input
                     type="checkbox"
                     id={category}
@@ -119,7 +206,10 @@ export default function ProductPage() {
                     onChange={() => handleCategoryChange(category)}
                     className="rounded border-gray-300 text-blue-600 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
                   />
-                  <label htmlFor={category} className="text-sm font-medium text-gray-700">
+                  <label
+                    htmlFor={category}
+                    className="text-sm font-medium text-gray-700"
+                  >
                     {category}
                   </label>
                 </div>
@@ -130,18 +220,38 @@ export default function ProductPage() {
 
         {/* Product Grid */}
         <main className="w-full md:w-3/4">
-          <div className="grid grid-cols-1  sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredProducts.map(product => (
-              <div key={product.id} className="bg-white rounded-lg shadow-md overflow-hidden">
-                <Link to={product.link}  >
-                <img src={product.image} alt={product.name} className="w-full h-80 object-cover transition-transform duration-300 ease-in-out hover:scale-110" />
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {filteredProducts.map((product) => (
+              <div
+                key={product.id}
+                className="bg-white rounded-lg shadow-md overflow-hidden"
+              >
+                <Link to={product.link}>
+                  <img
+                    src={product.image}
+                    alt={product.name}
+                    className="w-full h-80 object-cover transition-transform duration-300 ease-in-out hover:scale-110"
+                  />
                 </Link>
-                <div className="p-4 ">
-                  <h3 className="font-semibold text-lg mb-2">{product.name}</h3>
+                <div className="p-4">
+                  <div className="flex justify-between items-start mb-2">
+                    <h3 className="font-semibold text-lg">{product.name}</h3>
+
+                    <button
+                      className={`text-black font-bold py-2 px-4 rounded ml-2 ${
+                        isInWishlist(product.id)
+                          ? "text-yellow-500"
+                          : "text-gray-400"
+                      }`}
+                      onClick={() => handleAddToWishlist(product)}
+                    >
+                      <Star className="w-8 h-8" />
+                    </button>
+                  </div>
                   <p className="text-gray-600 mb-2">{product.category}</p>
                   <div className="flex justify-between items-center">
                     <span className="font-bold">${product.price}</span>
-                    <button 
+                    <button
                       className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
                       onClick={() => handleAddToCart(product)}
                     >
@@ -155,5 +265,5 @@ export default function ProductPage() {
         </main>
       </div>
     </div>
-  )
+  );
 }
