@@ -8,12 +8,13 @@ import ProductDescription from "./Components/Product Description Page/ProductDes
 import ProductLink from './Components/Home Page/ProductLink';
 import Footer from './Components/Home Page/Footer';
 import ProductPage from './Components/Product Page/ProductPage';
-import Contact from './Components/Contact Page/Contact';
+ 
 import CartPage from './Components/Cart/CartPage';
 import { CartProvider } from './Components/Hooks/CartContext'; 
 import Wishlist from './Components/Cart/WishList';
 import { WishlistProvider } from './Components/Hooks/WishlistContext';
 import Profile from './Components/UserProfile Page/Profile';
+import ContactPage from './Components/Contact Page/ContactPage';
 
 function App() {
   return (
@@ -34,7 +35,7 @@ function App() {
             } />
             <Route path="/About" element={<ProductDescription/>} />  
             <Route path="/products" element={<ProductPage/>} />
-            <Route path="/contact" element={<Contact/>} />
+            <Route path="/contact" element={<ContactPage/>} />
             <Route path="/cart" element={<CartPage/>} />
             <Route path="/wishlist" element={<Wishlist/>} />
             <Route path="/profile" element={<Profile/>} />

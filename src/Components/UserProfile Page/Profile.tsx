@@ -1,4 +1,4 @@
-import   { useState } from 'react'
+import React,  { useState } from 'react'
 import { ChevronDown, ChevronUp, User, Mail, Phone, MapPin } from 'lucide-react'
 
 // Define types for our data structures
@@ -20,15 +20,15 @@ type Order = {
   // Mock data
   const userData: UserData = {
     name: 'John Doe',
-    email: 'john.doe@example.com',
-    phone: '+1 (555) 123-4567',
-    address: '123 Main St, Anytown, AN 12345'
+    email: 'abc.123@example.com',
+    phone: '+1 (91) 123-4567',
+    address: '123 Street New Delhi, India'
   }
   
   const orderHistory: Order[] = [
     {
       id: 'ORD-001',
-      date: '2023-05-15',
+      date: '2024-10-15',
       total: 129.99,
       status: 'Delivered',
       items: [
@@ -38,7 +38,7 @@ type Order = {
     },
     {
       id: 'ORD-002',
-      date: '2023-06-02',
+      date: '2024-10-15',
       total: 199.99,
       status: 'Shipped',
       items: [
@@ -47,17 +47,17 @@ type Order = {
     },
     {
       id: 'ORD-003',
-      date: '2023-06-10',
-      total: 54.97,
+      date: '2024-10-15',
+      total: 69.98,
       status: 'Processing',
       items: [
         { name: 'T-Shirt', quantity: 2, price: 19.99 },
-        { name: 'Socks', quantity: 3, price: 4.99 }
+        { name: 'Jeans', quantity: 3, price: 49.99 }
       ]
     }
   ]
   
-  const Profile = () => {
+  const Profile:React.FC = () => {
     const [expandedOrder, setExpandedOrder] = useState<string | null>(null)
   
     const toggleOrderDetails = (orderId: string) => {
