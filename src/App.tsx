@@ -13,6 +13,7 @@ import CartPage from './Components/Cart/CartPage';
 import { CartProvider } from './Components/Hooks/CartContext'; 
 import Wishlist from './Components/Cart/WishList';
 import { WishlistProvider } from './Components/Hooks/WishlistContext';
+import Profile from './Components/UserProfile Page/Profile';
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
             <Route path="/contact" element={<Contact/>} />
             <Route path="/cart" element={<CartPage/>} />
             <Route path="/wishlist" element={<Wishlist/>} />
+            <Route path="/profile" element={<Profile/>} />
           </Routes>
           </main>
           <Footer/>
