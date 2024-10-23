@@ -142,7 +142,7 @@ type Order = {
                     </div>
                   </div>
                   {expandedOrder === order.id && (
-                    <div className="mt-4 px-6">
+                    <div className=" ">
                       <table className="min-w-full divide-y divide-gray-200">
                         <thead className="bg-gray-50">
                           <tr>
