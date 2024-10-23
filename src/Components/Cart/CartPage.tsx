@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import MacBook from '../../assets/img/macBook.jpg'
 import tshirt from '../../assets/img/Tshirt.webp'
 import nike from '../../assets/img/Nike1.jpg'
+import { Plus, Minus } from 'lucide-react'
 
 // Define types
 type Product = {
@@ -91,21 +92,21 @@ export default function CartPage() {
                     <div className="flex flex-col sm:flex-row items-center gap-2">
                       <div className="flex items-center gap-2">
                         <button
-                          className="bg-gray-200 text-gray-600 px-2 py-1 rounded-full hover:bg-gray-300 transition duration-300"
+                          className="bg-gray-200 text-gray-600 px-2 py-1 rounded-md hover:bg-gray-300 transition duration-300"
                           onClick={() => updateQuantity(item.id, item.quantity - 1)}
                         >
-                          -
+                          <Minus />
                         </button>
                         <span className="w-8 text-center">{item.quantity}</span>
                         <button
-                          className="bg-gray-200 text-gray-600 px-2 py-1 rounded-full hover:bg-gray-300 transition duration-300"
+                          className="bg-gray-200 text-gray-600 px-2 py-1 rounded-md hover:bg-gray-300 transition duration-300"
                           onClick={() => updateQuantity(item.id, item.quantity + 1)}
                         >
-                          +
+                          <Plus />
                         </button>
                       </div>
                       <button
-                        className="text-red-500 hover:text-red-600 transition duration-300 mt-2 sm:mt-0"
+                        className="text-red-500 hover:text-red-400 transition duration-300 mt-2 sm:mt-0"
                         onClick={() => removeItem(item.id)}
                       >
                         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
