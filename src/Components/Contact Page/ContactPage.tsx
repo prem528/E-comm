@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import {  Send } from "lucide-react";
 
 interface ContactFormData {
   name: string
@@ -80,7 +81,7 @@ export default function ContactPage() {
                     onChange={handleInputChange}
                     required
                     className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-300 ease-in-out"
-                    rows={6}
+                    rows={2}
                     placeholder="Your message here..."
                   ></textarea>
                 </div>
@@ -90,9 +91,7 @@ export default function ContactPage() {
                   className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-md transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
                 >
                   <div className="flex items-center justify-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-                    </svg>
+                     <Send className='mr-3' />
                     <span>Send Message</span>
                   </div>
                 </button>

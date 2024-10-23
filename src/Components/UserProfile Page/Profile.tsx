@@ -19,7 +19,7 @@ type Order = {
   
   // Mock data
   const userData: UserData = {
-    name: 'John Doe',
+    name: 'user name',
     email: 'abc.123@example.com',
     phone: '+1 (91) 123-4567',
     address: '123 Street New Delhi, India'
@@ -28,7 +28,7 @@ type Order = {
   const orderHistory: Order[] = [
     {
       id: 'ORD-001',
-      date: '2024-10-15',
+      date: '2024-10-20',
       total: 129.99,
       status: 'Delivered',
       items: [
@@ -38,7 +38,7 @@ type Order = {
     },
     {
       id: 'ORD-002',
-      date: '2024-10-15',
+      date: '2024-10-21',
       total: 199.99,
       status: 'Shipped',
       items: [
@@ -47,7 +47,7 @@ type Order = {
     },
     {
       id: 'ORD-003',
-      date: '2024-10-15',
+      date: '2024-10-20',
       total: 69.98,
       status: 'Processing',
       items: [
@@ -66,7 +66,7 @@ type Order = {
     return (
       <div className="min-h-screen bg-gray-100 py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto">
-          <div className="bg-white shadow overflow-hidden sm:rounded-lg">
+          <div className="bg-white overflow-hidden rounded-xl shadow-2xl ">
             <div className="px-4 py-5 sm:px-6">
               <h1 className="text-2xl font-bold text-gray-900">User Profile</h1>
             </div>
@@ -104,7 +104,7 @@ type Order = {
             </div>
           </div>
 
-          <div className="mt-8 bg-white shadow overflow-hidden sm:rounded-lg">
+          <div className="mt-8 bg-white overflow-hidden rounded-xl shadow-2xl">
             <div className="px-4 py-5 sm:px-6">
               <h2 className="text-xl font-bold text-gray-900">Order History</h2>
             </div>
@@ -142,7 +142,7 @@ type Order = {
                     </div>
                   </div>
                   {expandedOrder === order.id && (
-                    <div className="mt-4">
+                    <div className="mt-4 px-6">
                       <table className="min-w-full divide-y divide-gray-200">
                         <thead className="bg-gray-50">
                           <tr>
@@ -154,7 +154,7 @@ type Order = {
                         <tbody className="bg-white divide-y divide-gray-200">
                           {order.items.map((item, index) => (
                             <tr key={index}>
-                              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{item.name}</td>
+                              <td className="px-6 py-4 whitespace-normal text-sm text-gray-900">{item.name}</td>
                               <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{item.quantity}</td>
                               <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${item.price.toFixed(2)}</td>
                             </tr>

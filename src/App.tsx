@@ -15,6 +15,7 @@ import Wishlist from './Components/Cart/WishList';
 import { WishlistProvider } from './Components/Hooks/WishlistContext';
 import Profile from './Components/UserProfile Page/Profile';
 import ContactPage from './Components/Contact Page/ContactPage';
+import PaymentForm from './Components/Payment/PaymentForm';
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
             <Route path="/cart" element={<CartPage/>} />
             <Route path="/wishlist" element={<Wishlist/>} />
             <Route path="/profile" element={<Profile/>} />
+            <Route path="/checkout" element={<PaymentForm/>} />
           </Routes>
           </main>
           <Footer/>
